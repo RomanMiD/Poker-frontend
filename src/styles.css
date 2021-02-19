@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+header{
+  height: 40px;
+
+  background-color: rgba(99,140,197,0.82);
+}
+.cards-field{
+
+}
+
+input.ng-touched.ng-invalid{
+  border-color: darkred;
+}

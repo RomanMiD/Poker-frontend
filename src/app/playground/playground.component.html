@@ -1,0 +1,7 @@
+<app-card *ngFor="let card of cards"
+          [nominal]="card"
+          [isSelected]="selectedCard===card"
+          (click)="selectedCard=card"
+>
+
+</app-card>

@@ -1,0 +1,12 @@
+.right-block{
+  height: 300px;
+  border: gray dashed 1px;
+  text-align: center;
+  border-radius: 0;
+}
+.info{
+  background-color: rgba(99,140,197,0.82);
+}
+.player-table p{
+  border: gray solid 1px;
+}

@@ -1,0 +1,13 @@
+<ng-container *ngIf="nominal">
+  <li class="card" [ngClass]="{'selected': isSelected}">
+    <p class="top-left">{{nominal?.nominal}}</p>
+    <div class="inner">
+      <i class="icon" *ngIf="!nominal?.icon">{{nominal.nominal}}</i>
+      <fa-icon *ngIf="nominal?.icon" [icon]="['fas', nominal?.icon]"></fa-icon>
+
+    </div>
+    <p class="bottom-right">{{nominal?.nominal}}</p>
+  </li>
+</ng-container>
+
+

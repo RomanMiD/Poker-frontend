@@ -1,0 +1,24 @@
+<div class="room-name">
+  <p class="col-md-6">{{gameData?.roomName}}</p>
+</div>
+<div class='row'>
+
+  <ul class="list-group col col-md-6 col-xl-6 ">
+    <li *ngFor="let question of gameData?.questions" class="list-group-item">{{question}}</li>
+  </ul>
+
+</div>
+
+<div class="col-md-12">
+  <div class="row">
+
+    <div class="card-table col-md-8">
+      <app-playground>
+      </app-playground>
+    </div>
+
+  </div>
+</div>
+<div class="col-md-4">
+  <app-right-block></app-right-block>
+</div>

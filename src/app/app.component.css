@@ -1,0 +1,11 @@
+.grayed{
+  background-color: #edf2f7;
+}
+.room-name{
+  padding: 25px;
+  font-size: 30px;
+}
+.card-table{
+  border: black 1px solid;
+
+}
