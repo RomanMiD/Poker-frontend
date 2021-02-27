@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Game } from '../common/interfaces/game';
+import { Game } from '../../common/interfaces/game';
 
 @Component({
   selector: 'app-home',

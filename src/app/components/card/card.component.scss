@@ -1,15 +1,24 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
 .card {
-  display: inline-block;
-  float: left;
+  cursor: pointer;
+  display: block;
+
   margin-right: 10px;
   margin-top: 10px;
-  width: 133px;
+  //width: 133px;
   padding:0 5px;
   border-radius: 2%;
   font-size: 20px;
   position: relative;
+  transition: all .1s linear;
+  user-select: none;
+  &:active{
+    box-shadow: 0 10px 50px rgba(156, 173, 195, 0.3);
+    outline-offset: 0;
+    transform: translateY(-4px);
+  }
   &.selected{
-    background-color: rgba(192,162,197,0.22);
+    background-color: rgba($primary,0.85);
 
   }
   .top-left{
@@ -49,23 +58,6 @@
 
   }
 
-  @media screen and (max-width: 900px){
-    .cards{
-      width:10em;
-      height: 400px;
-      border: black 2px solid;
-    }
-    .card {
-      width: 60px;
-      height: 90px;
-      font-size: 10px ;
-      padding: 3px;
 
-    }
-    .inner{
-      border: gray 1px solid;
-    }
-
-  }
 
 }

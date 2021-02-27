@@ -11,24 +11,29 @@
 
         <ng-container *ngFor="let question of questions.controls; let i=index">
           <div class="row">
-            <textarea [formControlName]="i"
+            <!--<textarea [formControlName]="i"
                       class="form-control offset-2 col-8 mt-3"
                       placeholder="Обсуждаемый вопрос "
                       aria-describedby="button-addon2"
             >
-            </textarea>
-          <button *ngIf="questionsCount>1" (click)="removeQuestion(i)" type="button" class="btn col-2 close"
-                  aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            </textarea>-->
+            <div class="col-md-12">
+              <app-story-edit [control]= "questions.controls[i]"></app-story-edit>
+            </div>
+            <button *ngIf="questionsCount>1" (click)="removeQuestion(i)" type="button" class="btn col-2 close"
+                    aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         </ng-container>
 
       </div>
     </div>
     <button class="btn col-4 offset-4 mt-3 mb-3 btn-outline-secondary" (click)="addQuestion()">Добавить вопрос</button>
-    <div >
-      <button [disabled]="isLoading || form.invalid" class="btn btn-outline-primary col-4 offset-4" type="submit"> Создать</button>
+    <div>
+      <button [disabled]="isLoading || form.invalid" class="btn btn-outline-primary col-4 offset-4" type="submit">
+        Создать
+      </button>
     </div>
   </form>
 </div>

@@ -1,0 +1,29 @@
+
+<div *ngIf="gameData" class="col-md-12">
+  <div class="room-name">
+    <p>{{gameData.roomName}}</p>
+  </div>
+  <div class="row ">
+    <div class="col-md-8">
+      <app-playground></app-playground>
+    </div>
+    <div class="question col-md-4">
+      <app-right-block [players]="players"></app-right-block>
+    </div>
+    <div class="col-md-12">
+      <p>{{gameData.stories[currentStory]?.title}}</p>
+
+      <button class="btn btn-primary col-12"
+              (click)="increaseCount()">Следующий вопрос
+      </button>
+    </div>
+
+  </div>
+  <div class="row mt-3">
+    <ul class="list-group">
+      <li *ngFor="let story of gameData.stories" class="list-group-item ">{{story.title}}</li>
+
+    </ul>
+  </div>
+
+</div>

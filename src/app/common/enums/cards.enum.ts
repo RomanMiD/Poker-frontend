@@ -11,6 +11,6 @@ export enum CardsEnum {
   forty= '40',
   hundred= '100',
   question= '?',
-  coffee= 'coffee',
+  coffee= 'c',
   }
 

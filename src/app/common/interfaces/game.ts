@@ -1,5 +1,7 @@
+import { Story } from './story';
+
 export interface Game {
   roomName: string;
-  questions: string[];
+  stories: Story[];
   id?: number;
 }

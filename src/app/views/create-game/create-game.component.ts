@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {GameService} from '../services/game.service';
+import {GameService} from '../../services/game.service';
 import {finalize} from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Game } from '../common/interfaces/game';
+import { Game } from '../../common/interfaces/game';
 import { ToastrService } from 'ngx-toastr';
 import { SubSink } from 'subsink';
 
@@ -74,6 +74,8 @@ export class CreateGameComponent implements OnInit, OnDestroy {
    * и выводит сообщение о созданной игре, иначе - сообщение об ошибке.
    */
   onSubmit(): void {
+    console.log(this.form.value);
+    return ;
     if (this.form.valid) {
       this.isLoading = true;
       // this.submitSubscription

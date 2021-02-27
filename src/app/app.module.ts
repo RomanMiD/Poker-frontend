@@ -1,22 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import { RightBlockComponent } from './right-block/right-block.component';
-import { PlaygroundComponent } from './playground/playground.component';
-import {CardComponent} from './card/card.component';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
-import {CommonModule} from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { EntryComponent } from './entry/entry.component';
-import { GameComponent } from './game/game.component';
-import {RouterModule} from '@angular/router';
-import {AppRoutingModule} from './app-routing.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CreateGameComponent } from './create-game/create-game.component';
-import {HttpClientModule} from '@angular/common/http';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RightBlockComponent } from './components/right-block/right-block.component';
+import { PlaygroundComponent } from './components/playground/playground.component';
+import { CardComponent } from './components/card/card.component';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
+import { HomeComponent } from './views/home/home.component';
+import { EntryComponent } from './views/entry/entry.component';
+import { GameComponent } from './views/game/game.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateGameComponent } from './views/create-game/create-game.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { StoryEditComponent } from './components/story-edit/story-edit.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     EntryComponent,
     GameComponent,
     CreateGameComponent,
+    StoryEditComponent,
   ],
   imports: [
     BrowserModule,

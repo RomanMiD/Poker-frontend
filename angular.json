@@ -1,14 +1,15 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "analytics": "639cc478-4cd5-44cf-8923-e334c60680c0",
+    "packageManager": "npm"
+  },
   "newProjectRoot": "projects",
   "projects": {
     "pokher": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        },
         "@schematics/angular:component": {
           "style": "scss"
         }
@@ -31,14 +32,11 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.css",
-
-              "node_modules/ngx-toastr/toastr.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "lodash"
             ]
           },
           "configurations": {
@@ -52,6 +50,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -59,13 +58,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -100,7 +99,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -133,13 +132,5 @@
       }
     }
   },
-  "defaultProject": "pokher",
-  "cli": {
-    "analytics": "b9ab5afb-f518-4e2a-9f60-69dd9dc5a061"
-  },
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "scs"
-    }
-  }
+  "defaultProject": "pokher"
 }
