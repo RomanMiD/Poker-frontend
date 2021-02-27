@@ -1,0 +1,8 @@
+<label>Заголовок истории</label>
+<div class="input-group mb-3">
+  <input type="text" [(ngModel)]="value.title" (ngModelChange)="onChange()" class="form-control" placeholder="Введите заголовк" >
+</div>
+<label>Описание истории</label>
+<div class="input-group mb-3">
+  <textarea class="form-control" [(ngModel)]="value.body" (ngModelChange)="onChange()" placeholder="Введите текст"></textarea>
+</div>
