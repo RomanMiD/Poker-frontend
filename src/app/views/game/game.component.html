@@ -11,7 +11,7 @@
       <app-right-block [players]="players"></app-right-block>
     </div>
     <div class="col-md-12">
-      <p>{{gameData.stories[currentStory]?.title}}</p>
+      <label>{{gameData.stories[currentStory]?.title}}</label>
 
       <button class="btn btn-primary col-12"
               (click)="increaseCount()">Следующий вопрос
@@ -21,9 +21,21 @@
   </div>
   <div class="row mt-3">
     <ul class="list-group">
-      <li *ngFor="let story of gameData.stories" class="list-group-item ">{{story.title}}</li>
+      <li *ngFor="let story of gameData.stories" class="list-group-item ">
+        <button (click)="openEditStoryModal(storyEditing, story)">{{story.title}}</button>
+      </li>
 
     </ul>
   </div>
+  <ng-template #storyEditing>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+    <app-story-edit [(ngModel)]="currentEditStory"></app-story-edit>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="modalOnSubmit()">Submit</button>
+      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+    </div>
+  </ng-template>
 
 </div>

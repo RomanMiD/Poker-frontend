@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { StoryEditComponent } from './components/story-edit/story-edit.component';
+import { TestComponentComponent } from './components/test-component/test-component.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { StoryEditComponent } from './components/story-edit/story-edit.component
     GameComponent,
     CreateGameComponent,
     StoryEditComponent,
+    TestComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { StoryEditComponent } from './components/story-edit/story-edit.component
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

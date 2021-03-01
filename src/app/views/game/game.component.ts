@@ -1,12 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { GameService } from '../../services/game.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Game } from '../../common/interfaces/game';
 import { ToastrService } from 'ngx-toastr';
 import { Player } from '../../common/interfaces/player';
 import { Role } from '../../common/enums/role.enum';
 import { map } from 'rxjs/operators';
 import { orderBy } from 'lodash';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Story } from '../../common/interfaces/story';
+import { cloneDeep } from 'lodash';
+
 
 @Component({
   selector: 'app-game',
@@ -22,14 +26,21 @@ export class GameComponent implements OnInit {
     {name: 'Ivan', role: Role.GameMaster},
     {name: 'Shawn', role: Role.Member},
     {name: 'Mark', role: Role.Member}];
-
+  currentStory = 0;
+  modalRef: BsModalRef;
+  currentEditStory: Story;
 
   constructor(private gameService: GameService,
               private route: ActivatedRoute,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private modalService: BsModalService) {
   }
 
-  currentStory = 0;
+
+  openEditStoryModal(template: TemplateRef<any>, story: Story): void {
+    this.modalRef = this.modalService.show(template);
+    this.currentEditStory = cloneDeep(story);
+  }
 
   increaseCount(): void {
     if (this.currentStory < this.questionsCount - 1) {
@@ -41,12 +52,17 @@ export class GameComponent implements OnInit {
     return this.gameData?.stories.length as number;
   }
 
+  modalOnSubmit(): void {
+    this.modalRef.hide();
+  }
+
+
   ngOnInit(): void {
 
     this.gameID = +this.route.snapshot.params.id;
     this.gameService.getGame(this.gameID)
       .pipe(map((game) => {
-        game.stories = orderBy(game.stories, ['position'] , ['asc']);
+        game.stories = orderBy(game.stories, ['position'], ['asc']);
         return game;
       }))
       .subscribe({
