@@ -13,7 +13,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   }]
 })
 export class TestComponentComponent implements ControlValueAccessor {
-  // tslint:disable-next-line:variable-name
+  //  tslint:disable-next-line:variable-name
   private _value;
   get value(): any {
     return this._value;
