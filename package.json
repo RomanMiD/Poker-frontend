@@ -24,8 +24,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@types/socket.io-client": "^1.4.36",
     "bootstrap": "^4.5.3",
-    "jquerry": "^2.0.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.21",
     "ngx-bootstrap": "^6.2.0",
@@ -40,9 +41,9 @@
     "@angular-devkit/build-angular": "~0.1100.7",
     "@angular/cli": "~11.0.7",
     "@angular/compiler-cli": "~11.0.9",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@types/jasmine": "~3.6.0",
     "@types/lodash": "^4.14.168",
-    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -52,8 +53,19 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
-    "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "^4.1.5"
-  }
+    "typescript": "^4.2.3"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanMiD/Pokherr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanMiD/Pokherr/issues"
+  },
+  "homepage": "https://github.com/RomanMiD/Pokherr#readme"
 }
