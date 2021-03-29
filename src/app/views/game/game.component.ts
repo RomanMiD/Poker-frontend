@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { orderBy } from 'lodash';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Story } from '../../common/interfaces/story';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, findIndex } from 'lodash';
 
 
 @Component({
@@ -53,15 +53,24 @@ export class GameComponent implements OnInit {
   }
 
   modalOnSubmit(): void {
+    this.gameService.updateGameStory()
+      .pipe(map(value => value))
+      .subscribe({
+        next: value => {
+          const storyIndex = findIndex(this.gameData.stories, {id: value.id});
+          this.gameData.stories[storyIndex] = value;
+        }, error: () => this.toastr.error('Данные не были получены')
+      });
     this.modalRef.hide();
+
   }
 
 
   ngOnInit(): void {
-
     this.gameID = +this.route.snapshot.params.id;
     this.gameService.getGame(this.gameID)
       .pipe(map((game) => {
+        // console.log(game.stories);
         game.stories = orderBy(game.stories, ['position'], ['asc']);
         return game;
       }))
@@ -74,6 +83,8 @@ export class GameComponent implements OnInit {
           this.toastr.error('Данные игры не получены');
         }
       });
+
+
   }
 
 }

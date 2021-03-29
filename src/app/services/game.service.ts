@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Game } from '../common/interfaces/game';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Story } from '../common/interfaces/story';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +28,9 @@ export class GameService {
    */
   getGame(id: number): Observable<Game> {
     return this.Http.get<Game>('/assets/stubdata/game.json');
+  }
+
+  updateGameStory(): Observable<Story> {
+    return this.Http.get<Story>('/assets/stubdata/story.json');
   }
 }

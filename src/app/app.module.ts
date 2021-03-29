@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { StoryEditComponent } from './components/story-edit/story-edit.component';
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { RegistrationComponent } from './views/registration/registration.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CreateGameComponent,
     StoryEditComponent,
     TestComponentComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
