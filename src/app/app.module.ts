@@ -8,7 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './views/home/home.component';
-import { EntryComponent } from './views/entry/entry.component';
+import { LoginComponent } from './views/login/login.component';
 import { GameComponent } from './views/game/game.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +30,7 @@ import { RegistrationComponent } from './views/registration/registration.compone
     PlaygroundComponent,
     CardComponent,
     HomeComponent,
-    EntryComponent,
+    LoginComponent,
     GameComponent,
     CreateGameComponent,
     StoryEditComponent,

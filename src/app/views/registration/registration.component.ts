@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { Base } from '../../common/classes/base.class';
-import { AuthService } from '../../services/auth.service';
+import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -17,7 +17,7 @@ export class RegistrationComponent extends Base implements OnInit {
   isLoading = true;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              private loginService: LoginService,
               private router: Router,
               private toastr: ToastrService) {
     super();
@@ -49,7 +49,7 @@ export class RegistrationComponent extends Base implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.subs.sink = this.authService.registrate(this.form.value)
+      this.subs.sink = this.loginService.registration(this.form.value)
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
             next: () => {

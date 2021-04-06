@@ -31,6 +31,7 @@
     "lodash": "^4.17.21",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "^13.2.0",
+    "poker-common": "file:../pokher-common",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "subsink": "^1.0.2",

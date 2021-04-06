@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { convertToParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-entry',
-  templateUrl: './entry.component.html',
-  styleUrls: ['./entry.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class EntryComponent implements OnInit {
+export class LoginComponent implements OnInit {
   form: FormGroup;
 
   showPassword = true;
@@ -21,9 +20,10 @@ export class EntryComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private toastr: ToastrService) {
     this.form = this.fb.group({
-      name: [null, [Validators.required,
+      email: [null, [Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(30)]],
+        Validators.maxLength(30),
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: [null, [Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)]]
@@ -34,8 +34,7 @@ export class EntryComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
-    console.log(this.form.valid);
+
     this.toastr.success('Переходим куда-то');
   }
 

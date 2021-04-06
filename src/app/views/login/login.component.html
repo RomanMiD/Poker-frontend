@@ -1,11 +1,11 @@
 <div class="col-6 col-lg-6 offset-3 offset-lg-3">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input-group">
-      <input type="text" formControlName="name" class="form-control" placeholder="Представься, друг"
+      <input type="text" formControlName="email" class="form-control" placeholder="email"
              aria-describedby="button-addon1">
     </div>
     <div class="input-group">
-      <input [type]="!showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Молви, друг, и войди" aria-describedby="button-addon1">
+      <input [type]="!showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="password" aria-describedby="button-addon1">
       <div class="input-group-append">
       <span class="input-group-text mt-2" (click)="toggleFieldTextType()">
          <i
