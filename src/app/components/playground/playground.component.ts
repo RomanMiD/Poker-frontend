@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CardsEnum } from '../../common/enums/cards.enum';
+import { CardValue } from 'poker-common';
 import { Card } from '../../common/interfaces/card';
 
 @Component({
@@ -9,15 +9,15 @@ import { Card } from '../../common/interfaces/card';
 })
 export class PlaygroundComponent implements OnInit {
   cards: Array<Card> = [
-    {nominal: CardsEnum.zero},
-    {nominal: CardsEnum.one},
-    {nominal: CardsEnum.two},
-    {nominal: CardsEnum.three},
-    {nominal: CardsEnum.five},
-    {nominal: CardsEnum.eight},
-    {nominal: CardsEnum.thirteen},
-    {nominal: CardsEnum.forty},
-    {nominal: CardsEnum.coffee, icon: 'coffee'}];
+    {nominal: CardValue.Zero},
+    {nominal: CardValue.One},
+    {nominal: CardValue.Two},
+    {nominal: CardValue.Three},
+    {nominal: CardValue.Five},
+    {nominal: CardValue.Eight},
+    {nominal: CardValue.Thirteen},
+    {nominal: CardValue.Forty},
+    {nominal: CardValue.Coffee, icon: 'coffee'}];
 
   selectedCard: Card = null;
 

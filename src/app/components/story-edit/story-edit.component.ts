@@ -7,7 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Base } from '../../common/classes/base.class';
-import { Story } from '../../common/interfaces/story';
+import { Story } from 'poker-common';
 
 @Component({
   selector: 'app-story-edit',

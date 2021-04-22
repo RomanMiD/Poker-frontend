@@ -7,6 +7,7 @@ import {
   LoginResponse,
   RegistrationRequest,
   RegistrationResponse,
+  WhoAmIResponse
 } from 'poker-common';
 
 
@@ -16,14 +17,21 @@ import {
 export class LoginService {
   private basePath = `${environment.apiUrl}/users`;
 
-  constructor(private Http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   public registration(userData: RegistrationRequest): Observable<RegistrationResponse> {
-    return this.Http.post<RegistrationResponse>(`${this.basePath}/registration`, userData);
+    return this.http.post<RegistrationResponse>(`${this.basePath}/registration`, userData);
   }
 
   public login(userData: LoginRequest): Observable<LoginResponse> {
-    return this.Http.post<LoginResponse>(`${this.basePath}/entry`, userData);
+    return this.http.post<LoginResponse>(`${this.basePath}/login`, userData);
+  }
+
+  /**
+   * Метод возвращает информацию об авторизованном пользователе
+   */
+  public whoAmI(): Observable<WhoAmIResponse> {
+    return this.http.post<WhoAmIResponse>(`${this.basePath}/whoAmI`, {});
   }
 }

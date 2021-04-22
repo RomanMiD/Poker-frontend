@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Player } from '../../common/interfaces/player';
-import { Role } from '../../common/enums/role.enum';
+import { Player, Role } from 'poker-common';
 
 @Component({
   selector: 'app-right-block',

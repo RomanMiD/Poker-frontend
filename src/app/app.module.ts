@@ -14,13 +14,15 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateGameComponent } from './views/create-game/create-game.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { StoryEditComponent } from './components/story-edit/story-edit.component';
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RegistrationComponent } from './views/registration/registration.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { RegistrationComponent } from './views/registration/registration.compone
     StoryEditComponent,
     TestComponentComponent,
     RegistrationComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,11 @@ import { RegistrationComponent } from './views/registration/registration.compone
     HttpClientModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Game } from '../common/interfaces/game';
+
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Story } from '../common/interfaces/story';
+import { Story, Game } from 'poker-common';
 import { LoginService } from './login.service';
 
 @Injectable({

@@ -3,9 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { GameService } from '../../services/game.service';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Game } from '../../common/interfaces/game';
 import { ToastrService } from 'ngx-toastr';
-import { Story } from '../../common/interfaces/story';
+import { Story, Game } from 'poker-common';
 import { Base } from '../../common/classes/base.class';
 
 @Component({
@@ -26,7 +25,7 @@ export class CreateGameComponent extends Base implements OnInit {
       roomName: [null, [Validators.required,
         Validators.minLength(3),
         Validators.maxLength(40)]],
-      questions: this.fb.array([this.newQuestionElement()])
+      questions: this.fb.array([this.newStoryElement()])
     });
   }
 
@@ -41,13 +40,14 @@ export class CreateGameComponent extends Base implements OnInit {
     return this.form.get('roomName') as any;
   }
 
-  addQuestion(): void {
+  addStory(): void {
+    // Пересмотреть количество вопросов
     if (this.questions.controls.length < 5) {
-      this.questions.push(this.newQuestionElement());
+      this.questions.push(this.newStoryElement());
     }
   }
 
-  private newQuestionElement(): FormControl {
+  private newStoryElement(): FormControl {
     return this.fb.control({position: null, title: null, body: null} as Story);
   }
 
@@ -76,12 +76,12 @@ export class CreateGameComponent extends Base implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.isLoading = true;
-      // this.submitSubscription
       this.subs.sink = this.gameService.createGame(this.form.value)
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
           next: (createdGame: Game) => {
-            this.router.navigate(['game', createdGame.id]);
+            console.log(this.form.value);
+            // this.router.navigate(['game', createdGame._id]);
             this.successCreateGame('Игра успешно создана');
           },
           error: () => this.failedCreateGame('Что-то пошло не так')
