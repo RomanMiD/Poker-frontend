@@ -80,7 +80,6 @@ export class CreateGameComponent extends Base implements OnInit {
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
           next: (createdGame: Game) => {
-            console.log(this.form.value);
             // this.router.navigate(['game', createdGame._id]);
             this.successCreateGame('Игра успешно создана');
           },
@@ -88,4 +87,5 @@ export class CreateGameComponent extends Base implements OnInit {
         });
     }
   }
+
 }

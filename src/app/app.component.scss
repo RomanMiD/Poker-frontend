@@ -1,5 +1,6 @@
 .grayed{
   background-color: #edf2f7;
+  padding-bottom: 20px;
 }
 .room-name{
   padding: 25px;
@@ -12,5 +13,5 @@
 :host {
   display: block;
   height: 30000px;
-  background: url("/assets/images/demo-bg.jpg");
+  background: url("../assets/images/demo-bg.jpg");
 }
