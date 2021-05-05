@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'game/:id', component: GameComponent, canActivate: [IdGuard]},
   {path: 'api/users/login', component: LoginComponent},
-  {path: 'newgame', component: CreateGameComponent},
+  {path: 'create', component: CreateGameComponent},
   {path: 'api/users/registration', component: RegistrationComponent},
   {path: '**', component: LoginComponent}
 ];
