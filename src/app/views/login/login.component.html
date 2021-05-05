@@ -1,0 +1,35 @@
+<div class="col-6 col-lg-6 offset-3 offset-lg-3">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <input type="text" formControlName="email" class="form-control" placeholder="email"
+             aria-describedby="button-addon1">
+    </div>
+    <div class="input-group">
+      <input [type]="!showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="password" aria-describedby="button-addon1">
+      <div class="input-group-append">
+      <span class="input-group-text mt-2" (click)="toggleFieldTextType()">
+         <i
+           class="fa"
+           [ngClass]="{
+          'fa-eye-slash': !showPassword,
+          'fa-eye': showPassword
+        }"
+           (click)="toggleFieldTextType()"
+         ></i>
+      </span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <button class="btn btn-primary"
+              type="submit"
+              id="button-addon1"
+              [disabled]="form.untouched|| form.invalid">Войти
+      </button>
+    </div>
+  </form>
+  <div *ngIf="isCorrectly"
+       [hidden]="form.valid"
+       class="alert alert-danger">Something wrong
+  </div>
+</div>

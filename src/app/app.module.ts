@@ -8,16 +8,21 @@ import { CardComponent } from './components/card/card.component';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './views/home/home.component';
-import { EntryComponent } from './views/entry/entry.component';
+import { LoginComponent } from './views/login/login.component';
 import { GameComponent } from './views/game/game.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateGameComponent } from './views/create-game/create-game.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { StoryEditComponent } from './components/story-edit/story-edit.component';
+import { TestComponentComponent } from './components/test-component/test-component.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { RegistrationComponent } from './views/registration/registration.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -27,10 +32,13 @@ import { StoryEditComponent } from './components/story-edit/story-edit.component
     PlaygroundComponent,
     CardComponent,
     HomeComponent,
-    EntryComponent,
+    LoginComponent,
     GameComponent,
     CreateGameComponent,
     StoryEditComponent,
+    TestComponentComponent,
+    RegistrationComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +51,13 @@ import { StoryEditComponent } from './components/story-edit/story-edit.component
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

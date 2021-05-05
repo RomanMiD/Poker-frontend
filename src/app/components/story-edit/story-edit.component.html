@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <label>Заголовок истории</label>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" formControlName="title" placeholder="Введите заголовок">
+  </div>
+  <label>Описание истории</label>
+  <div class="input-group mb-3">
+    <textarea class="form-control" formControlName="body" placeholder="Введите текст"></textarea>
+  </div>
+</form>

@@ -13,7 +13,7 @@ export class IdGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (route.params.id && Number.isInteger(+route.params.id)) {
+    if (route.params._id && Number.isInteger(+route.params._id)) {
       return true;
     }
     this.router.navigate(['/']);

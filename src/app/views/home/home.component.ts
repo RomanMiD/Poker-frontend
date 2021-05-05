@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Game } from '../../common/interfaces/game';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +8,18 @@ import { Game } from '../../common/interfaces/game';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  form: FormGroup;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private fb: FormBuilder) {
   }
   gotoPage(path: string, id?: number): void{
     this.router.navigate([path, id]);
   }
   ngOnInit(): void {
+    this.form = this.fb.group({
+      counter: 5
+    });
   }
 
 }

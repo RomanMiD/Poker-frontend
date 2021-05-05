@@ -1,8 +1,8 @@
-import {CardsEnum} from '../enums/cards.enum';
-import {IconName} from '@fortawesome/fontawesome-svg-core';
+import { CardValue } from 'poker-common';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 export interface Card {
-  nominal: CardsEnum;
+  nominal: CardValue;
   icon?: IconName;
 
 }
