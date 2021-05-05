@@ -1,14 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
-import { Game } from '../../common/interfaces/game';
 import { ToastrService } from 'ngx-toastr';
-import { Player } from '../../common/interfaces/player';
-import { Role } from '../../common/enums/role.enum';
 import { map } from 'rxjs/operators';
 import { orderBy } from 'lodash';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Story } from '../../common/interfaces/story';
+import { Game, Story, Role, Player } from 'poker-common';
 import { cloneDeep, findIndex } from 'lodash';
 
 
@@ -20,12 +17,7 @@ import { cloneDeep, findIndex } from 'lodash';
 export class GameComponent implements OnInit {
   gameData: Game;
   gameID: number;
-  players: Player[] = [
-    {name: 'John', role: Role.Member},
-    {name: 'Neytank', role: Role.Member},
-    {name: 'Ivan', role: Role.GameMaster},
-    {name: 'Shawn', role: Role.Member},
-    {name: 'Mark', role: Role.Member}];
+  players: Player[] = [];
   currentStory = 0;
   modalRef: BsModalRef;
   currentEditStory: Story;
@@ -57,7 +49,7 @@ export class GameComponent implements OnInit {
       .pipe(map(value => value))
       .subscribe({
         next: value => {
-          const storyIndex = findIndex(this.gameData.stories, {id: value.id});
+          const storyIndex = findIndex(this.gameData.stories, {_id: value._id});
           this.gameData.stories[storyIndex] = value;
         }, error: () => this.toastr.error('Данные не были получены')
       });
