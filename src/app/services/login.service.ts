@@ -32,6 +32,6 @@ export class LoginService {
    * Метод возвращает информацию об авторизованном пользователе
    */
   public whoAmI(): Observable<WhoAmIResponse> {
-    return this.http.post<WhoAmIResponse>(`${this.basePath}/whoAmI`, {});
+    return this.http.get<WhoAmIResponse>(`${this.basePath}/whoAmI`);
   }
 }

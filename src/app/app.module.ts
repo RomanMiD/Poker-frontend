@@ -19,10 +19,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { StoryEditComponent } from './components/story-edit/story-edit.component';
 import { TestComponentComponent } from './components/test-component/test-component.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { RegistrationComponent } from './views/registration/registration.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { HeaderComponent } from './components/header/header.component';
+import { BoardComponent } from './views/board/board.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { HeaderComponent } from './components/header/header.component';
     TestComponentComponent,
     RegistrationComponent,
     HeaderComponent,
+    BoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { HeaderComponent } from './components/header/header.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    NgbModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

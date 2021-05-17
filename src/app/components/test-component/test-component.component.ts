@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, TemplateRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 
 @Component({
   selector: 'app-test-component',
@@ -25,14 +26,14 @@ export class TestComponentComponent implements ControlValueAccessor {
     this.onChange(this._value);
   }
 
+  private modalRef: NgbModalRef
 
-  modalRef: BsModalRef;
-
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: NgbModal) {
   }
 
+
   openModal(template: TemplateRef<any>): void {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.open(template);
   }
 
   onChange(_: any): void {

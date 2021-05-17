@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GameService } from '../../services/game.service';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Story, Game } from 'poker-common';
+import { GameBase, Story } from 'poker-common';
 import { Base } from '../../common/classes/base.class';
 
 @Component({
@@ -77,9 +77,12 @@ export class CreateGameComponent extends Base implements OnInit {
     if (this.form.valid) {
       this.isLoading = true;
       this.subs.sink = this.gameService.createGame(this.form.value)
-        .pipe(finalize(() => this.isLoading = false))
+        .pipe(finalize(() => this.isLoading = false),
+          map((res) => {
+            return res.data
+          }))
         .subscribe({
-          next: (createdGame: Game) => {
+          next: (createdGame: GameBase) => {
             // this.router.navigate(['game', createdGame._id]);
             this.successCreateGame('Игра успешно создана');
           },

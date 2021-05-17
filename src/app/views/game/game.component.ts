@@ -3,10 +3,10 @@ import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
-import { orderBy } from 'lodash';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Game, Story, Role, Player } from 'poker-common';
-import { cloneDeep, findIndex } from 'lodash';
+import { GameFull, GetGameResponse, Player, Story } from 'poker-common';
+import { cloneDeep, findIndex, orderBy } from 'lodash';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -15,22 +15,22 @@ import { cloneDeep, findIndex } from 'lodash';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  gameData: Game;
-  gameID: number;
+  gameData: GameFull;
+  gameID: string;
   players: Player[] = [];
   currentStory = 0;
-  modalRef: BsModalRef;
+  modalRef: NgbModalRef;
   currentEditStory: Story;
 
   constructor(private gameService: GameService,
               private route: ActivatedRoute,
               private toastr: ToastrService,
-              private modalService: BsModalService) {
+              private modalService: NgbModal) {
   }
 
 
   openEditStoryModal(template: TemplateRef<any>, story: Story): void {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.open(template);
     this.currentEditStory = cloneDeep(story);
   }
 
@@ -53,21 +53,24 @@ export class GameComponent implements OnInit {
           this.gameData.stories[storyIndex] = value;
         }, error: () => this.toastr.error('Данные не были получены')
       });
-    this.modalRef.hide();
+    this.modalRef.close();
 
   }
 
 
   ngOnInit(): void {
-    this.gameID = +this.route.snapshot.params.id;
+    this.gameID = this.route.snapshot.params.id;
     this.gameService.getGame(this.gameID)
-      .pipe(map((game) => {
+      // TODO Убрать any, разобраться с типами
+      .pipe(map((res: any) => {
+        return res.data;
+      }), map((game) => {
         // console.log(game.stories);
         game.stories = orderBy(game.stories, ['position'], ['asc']);
         return game;
       }))
       .subscribe({
-        next: (game) => {
+        next: (game: GameFull) => {
           this.gameData = game;
         },
         error: () => {

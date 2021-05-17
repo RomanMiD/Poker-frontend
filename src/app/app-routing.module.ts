@@ -6,14 +6,16 @@ import {LoginComponent} from './views/login/login.component';
 import {CreateGameComponent} from './views/create-game/create-game.component';
 import { IdGuard } from './guards/id.guard';
 import { RegistrationComponent } from './views/registration/registration.component';
+import { BoardComponent } from './views/board/board.component';
 
 const routes: Routes = [
   // {path:  '', pathMatch:  'full', redirectTo:  'home'},
   {path: '', component: HomeComponent},
+  {path: 'board', component: BoardComponent},
+  {path: 'game/create', component: CreateGameComponent},
   {path: 'game/:id', component: GameComponent, canActivate: [IdGuard]},
-  {path: 'api/users/login', component: LoginComponent},
-  {path: 'create', component: CreateGameComponent},
-  {path: 'api/users/registration', component: RegistrationComponent},
+  {path: 'users/login', component: LoginComponent},
+  {path: 'users/registration', component: RegistrationComponent},
   {path: '**', component: LoginComponent}
 ];
 @NgModule({
