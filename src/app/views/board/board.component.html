@@ -18,9 +18,9 @@
   <tr *ngFor="let game of gameList$ | async">
 <!--    <th scope="row">{{ country.id }}</th>-->
     <td>{{ game.roomName }}</td>
-    <td>02.12.2022 04:56</td>
-    <td> Идёт голосование</td>
-    <td> Пушкин Колотушка</td>
+    <td>{{game.createdDate| date: formatDate }}</td>
+    <td>{{getStatusLabel(game.status)}}</td>
+    <td>{{game.creator?.name}}</td>
   </tr>
   </tbody>
 </table>
