@@ -65,7 +65,6 @@ export class GameComponent implements OnInit {
       .pipe(map((res: any) => {
         return res.data;
       }), map((game) => {
-        // console.log(game.stories);
         game.stories = orderBy(game.stories, ['position'], ['asc']);
         return game;
       }))

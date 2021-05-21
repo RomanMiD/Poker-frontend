@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Story, GameFull, CreateGameResponse, GameListResponse } from 'poker-common';
+import { Story, GameFull, CreateGameResponse, GameListResponse, PaginationParams } from 'poker-common';
 import { environment } from "../../environments/environment";
 import { GetGameResponse } from '../../../../pokher-common/src';
 
@@ -27,11 +27,11 @@ export class GameService {
    * Метод получения данных игры
    */
   getGame(id: string): Observable<GetGameResponse> {
-    return this.http.get<GetGameResponse>(`${this.basePath}/full/${id}`);
+    return  this.http.get<GetGameResponse>(`${this.basePath}/full/${id}`);
   }
 
-  getGameList(): Observable<GameListResponse> {
-    return this.http.get<GameListResponse>(`${this.basePath}/list`);
+  getGameList(paginationParams: PaginationParams): Observable<GameListResponse> {
+    return this.http.get<GameListResponse>(`${this.basePath}/list?skip=${paginationParams.skip}&limit=${paginationParams.limit}`);
   }
 
   updateGameStory(): Observable<Story> {

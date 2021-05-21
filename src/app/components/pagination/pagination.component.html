@@ -1,0 +1,10 @@
+<ngb-pagination
+  [collectionSize]="totalCount"
+  [(page)]="page"
+  [maxSize]="pageSize"
+  [rotate]="true"
+  [boundaryLinks]="true"
+(pageChange)="onPageChange($event)"></ngb-pagination>
+
+{{totalCount}}
+

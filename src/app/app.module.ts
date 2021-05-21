@@ -24,6 +24,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { BoardComponent } from './views/board/board.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegistrationComponent,
     HeaderComponent,
     BoardComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

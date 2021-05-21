@@ -9,14 +9,14 @@
     <th scope="col">Статус игры</th>
     <th scope="col">Создатель</th>
 
-<!--    <th scope="col" sortable="name" (sort)="onSort($event)">Country</th>-->
-<!--    <th scope="col" sortable="area" (sort)="onSort($event)">Area</th>-->
-<!--    <th scope="col" sortable="population" (sort)="onSort($event)">Population</th>-->
+    <!--    <th scope="col" sortable="name" (sort)="onSort($event)">Country</th>-->
+    <!--    <th scope="col" sortable="area" (sort)="onSort($event)">Area</th>-->
+    <!--    <th scope="col" sortable="population" (sort)="onSort($event)">Population</th>-->
   </tr>
   </thead>
-  <tbody>
-  <tr *ngFor="let game of gameList$ | async">
-<!--    <th scope="row">{{ country.id }}</th>-->
+  <tbody *ngIf="gameList$ | async as gameList">
+  <tr *ngFor="let game of gameList">
+    <!--    <th scope="row">{{ country.id }}</th>-->
     <td>{{ game.roomName }}</td>
     <td>{{game.createdDate| date: formatDate }}</td>
     <td>{{getStatusLabel(game.status)}}</td>
@@ -24,3 +24,4 @@
   </tr>
   </tbody>
 </table>
+<app-pagination [totalCount]="totalCount" [pageSize]="pageSize" (pageChange)="onPageChange($event)"></app-pagination>
