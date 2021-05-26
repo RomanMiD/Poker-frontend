@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GameBase, Story } from 'poker-common';
 import { Base } from '../../common/classes/base.class';
-
+import {cloneDeep} from 'lodash';
 @Component({
   selector: 'app-create-game',
   templateUrl: './create-game.component.html',
@@ -15,6 +15,7 @@ import { Base } from '../../common/classes/base.class';
 export class CreateGameComponent extends Base implements OnInit {
   form: FormGroup;
   isLoading = false;
+
 
   constructor(private fb: FormBuilder,
               private gameService: GameService,
@@ -25,25 +26,26 @@ export class CreateGameComponent extends Base implements OnInit {
       roomName: [null, [Validators.required,
         Validators.minLength(3),
         Validators.maxLength(40)]],
-      questions: this.fb.array([this.newStoryElement()])
+      description:[null,
+        [Validators.minLength(15),
+        Validators.maxLength(150)]],
+      stories: this.fb.array([this.newStoryElement()])
     });
   }
 
   ngOnInit(): void {
+
   }
 
-  get questions(): FormArray {
-    return this.form.get('questions') as FormArray;
-  }
 
-  get roomName(): string {
-    return this.form.get('roomName') as any;
+  get stories(): FormArray {
+    return this.form.get('stories') as FormArray;
   }
 
   addStory(): void {
     // Пересмотреть количество вопросов
-    if (this.questions.controls.length < 5) {
-      this.questions.push(this.newStoryElement());
+    if (this.stories.controls.length < 5) {
+      this.stories.push(this.newStoryElement());
     }
   }
 
@@ -52,13 +54,13 @@ export class CreateGameComponent extends Base implements OnInit {
   }
 
   removeQuestion(i: number): void {
-    if (this.questions.controls.length > 1) {
-      this.questions.controls.splice(i, 1);
+    if (this.stories.controls.length > 1) {
+      this.stories.controls.splice(i, 1);
     }
   }
 
   get questionsCount(): number {
-    return this.questions.controls.length;
+    return this.stories.controls.length;
   }
 
   successCreateGame(message: string): void {
@@ -76,14 +78,19 @@ export class CreateGameComponent extends Base implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.isLoading = true;
-      this.subs.sink = this.gameService.createGame(this.form.value)
+      const formValue= cloneDeep(this.form.value);
+      formValue.stories.forEach((story,index) =>{
+        delete story.id;
+        story.position= index;
+      })
+        this.subs.sink = this.gameService.createGame(formValue)
         .pipe(finalize(() => this.isLoading = false),
           map((res) => {
             return res.data
           }))
         .subscribe({
           next: (createdGame: GameBase) => {
-            // this.router.navigate(['game', createdGame._id]);
+            this.router.navigate(['/game', createdGame._id]);
             this.successCreateGame('Игра успешно создана');
           },
           error: () => this.failedCreateGame('Что-то пошло не так')

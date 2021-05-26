@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Player, Role } from 'poker-common';
+import { PlayerFull, Role } from 'poker-common';
 
 @Component({
   selector: 'app-right-block',
@@ -11,12 +11,12 @@ export class RightBlockComponent implements OnInit {
   }
 
   @Input()
-  players: Player[];
+  players: PlayerFull[];
 
   ngOnInit(): void {
   }
 
-  isGameMaster(player: Player): boolean {
+  isGameMaster(player: PlayerFull): boolean {
     return player.role === Role.GameMaster;
   }
 

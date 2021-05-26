@@ -26,7 +26,7 @@ export class GameService {
   /**
    * Метод получения данных игры
    */
-  getGame(id: string): Observable<GetGameResponse> {
+  getFullGame(id: string): Observable<GetGameResponse> {
     return  this.http.get<GetGameResponse>(`${this.basePath}/full/${id}`);
   }
 

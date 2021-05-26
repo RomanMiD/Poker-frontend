@@ -1,5 +1,7 @@
 <!--<div class="container"></div>-->
-
+<button [routerLink]="['/game/create']"
+        class="btn btn-primary"> Создать игру
+</button>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -15,7 +17,7 @@
   </tr>
   </thead>
   <tbody *ngIf="gameList$ | async as gameList">
-  <tr *ngFor="let game of gameList">
+  <tr *ngFor="let game of gameList" [routerLink]="['/game', game._id]">
     <!--    <th scope="row">{{ country.id }}</th>-->
     <td>{{ game.roomName }}</td>
     <td>{{game.createdDate| date: formatDate }}</td>

@@ -1,13 +1,11 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormBuilder,
-  FormGroup, NG_VALIDATORS,
-  NG_VALUE_ACCESSOR, ValidationErrors, Validator,
+   NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
   Validators
 } from '@angular/forms';
-import { Base } from '../../common/classes/base.class';
-import { Story } from 'poker-common';
+import {SubForm} from "../../common/classes/sub-from.class";
 
 @Component({
   selector: 'app-story-edit',
@@ -25,10 +23,10 @@ import { Story } from 'poker-common';
       multi: true
     }]
 })
-export class StoryEditComponent extends Base implements ControlValueAccessor, Validator {
-  form: FormGroup;
 
-  constructor(fb: FormBuilder) {
+
+export class StoryEditComponent extends SubForm {
+  constructor(private fb:FormBuilder) {
     super();
     this.form = fb.group({
       id: [null],
@@ -36,50 +34,5 @@ export class StoryEditComponent extends Base implements ControlValueAccessor, Va
       title: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
       body: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(300)]],
     });
-
-    this.subs.sink = this.form.valueChanges.subscribe(() => {
-      this.validatorChange();
-    });
-  }
-
-  get value(): any {
-    return this.form.value;
-  }
-
-  @Input()
-  set value(val: any) {
-    if (val == null) {
-      return;
-    }
-    this.form.patchValue(val);
-    this.onChange(this.form.value);
-    this.validatorChange();
-  }
-
-  validate(): ValidationErrors {
-    // return this.form.errors;
-    return this.form.valid ? null : {invalid: true};
-  }
-
-  validatorChange(): void {
-
-  }
-
-  onChange(value: Story): void {
-  }
-
-  writeValue(value: any): void {
-    this.value = value;
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-  }
-
-  registerOnValidatorChange?(fn: () => void): void {
-    this.validatorChange = fn;
   }
 }

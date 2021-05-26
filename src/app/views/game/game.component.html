@@ -28,13 +28,13 @@
     </ul>
   </div>
   <ng-template #storyEditing>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.close()">
       <span aria-hidden="true">×</span>
     </button>
     <app-story-edit [(ngModel)]="currentEditStory"></app-story-edit>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" (click)="modalOnSubmit()">Submit</button>
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+      <button type="button" class="btn btn-default" (click)="modalRef.close()">Close</button>
     </div>
   </ng-template>
 

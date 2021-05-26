@@ -5,23 +5,32 @@
              class="form-control"
              placeholder="Название комнаты"
              aria-describedby="button-addon2">
-    </div>
-    <div class="input-group container mt-3">
-      <div formArrayName="questions" class="col-md-12">
 
-        <ng-container *ngFor="let question of questions.controls; let i=index">
+    </div>
+    <div class="input-group col-8 offset-2 ">
+      <textarea  formControlName="description"
+             class="form-control"
+             placeholder="Описание игры"
+             aria-describedby="button-addon2"></textarea>
+
+    </div>
+
+    <div class="input-group container mt-3">
+      <div formArrayName="stories" class="col-md-12">
+
+        <ng-container *ngFor="let question of stories.controls; let i=index">
           <div class="row">
             <button *ngIf="questionsCount>1" (click)="removeQuestion(i)" type="button" class="btn close cross "
                     aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
             <div class="col-md-12">
-              <app-story-edit [formControlName]="i">
+              <app-story-edit  [formControlName]="i">
               </app-story-edit>
             </div>
+
           </div>
         </ng-container>
-
       </div>
     </div>
     <span class="btn col-4 offset-4 mt-3 mb-3 btn-outline-secondary" (click)="addStory()">Добавить вопрос</span>
@@ -29,8 +38,7 @@
       <!-- // TODO Допилить кнопочку              -->
       <button [disabled]="isLoading || form.invalid"
               class="btn btn-outline-primary col-4 offset-4"
-              type="submit"
-      [routerLink]="['/board']">
+              type="submit">
         Создать
       </button>
     </div>

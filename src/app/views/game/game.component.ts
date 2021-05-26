@@ -3,7 +3,7 @@ import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
-import { GameFull, GetGameResponse, Player, Story } from 'poker-common';
+import { GameFull, PlayerFull, Story } from 'poker-common';
 import { cloneDeep, findIndex, orderBy } from 'lodash';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class GameComponent implements OnInit {
   gameData: GameFull;
   gameID: string;
-  players: Player[] = [];
+  players: PlayerFull[] = [];
   currentStory = 0;
   modalRef: NgbModalRef;
   currentEditStory: Story;
@@ -60,7 +60,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameID = this.route.snapshot.params.id;
-    this.gameService.getGame(this.gameID)
+    this.gameService.getFullGame(this.gameID)
       // TODO Убрать any, разобраться с типами
       .pipe(map((res: any) => {
         return res.data;
@@ -70,6 +70,7 @@ export class GameComponent implements OnInit {
       }))
       .subscribe({
         next: (game: GameFull) => {
+          this.players = game.players
           this.gameData = game;
         },
         error: () => {
