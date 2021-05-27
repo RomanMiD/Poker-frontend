@@ -17,16 +17,15 @@
               (click)="increaseCount()">Следующий вопрос
       </button>
     </div>
-
   </div>
   <div class="row mt-3">
     <ul class="list-group">
       <li *ngFor="let story of gameData.stories" class="list-group-item ">
         <button (click)="openEditStoryModal(storyEditing, story)">{{story.title}}</button>
       </li>
-
     </ul>
   </div>
+<!--  <button (click)="invitePlayer()" class="btn-primary">Пригласить</button>-->
   <ng-template #storyEditing>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.close()">
       <span aria-hidden="true">×</span>

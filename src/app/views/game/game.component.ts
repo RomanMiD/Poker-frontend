@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from "rxjs/operators";
 import { GameFull, PlayerFull, Story } from 'poker-common';
 import { cloneDeep, findIndex, orderBy } from 'lodash';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
@@ -58,16 +58,20 @@ export class GameComponent implements OnInit {
   }
 
 
+
+
   ngOnInit(): void {
     this.gameID = this.route.snapshot.params.id;
-    this.gameService.getFullGame(this.gameID)
-      // TODO Убрать any, разобраться с типами
-      .pipe(map((res: any) => {
-        return res.data;
-      }), map((game) => {
-        game.stories = orderBy(game.stories, ['position'], ['asc']);
-        return game;
-      }))
+    this.gameService.joinGame(this.gameID)
+      .pipe(switchMap(()=>{
+        return this.gameService.getFullGame(this.gameID)
+      }),
+        map((res: any) => {
+          return res.data;
+        }), map((game) => {
+          game.stories = orderBy(game.stories, ['position'], ['asc']);
+          return game;
+        }))
       .subscribe({
         next: (game: GameFull) => {
           this.players = game.players
@@ -79,6 +83,26 @@ export class GameComponent implements OnInit {
         }
       });
 
+    //
+    //
+    // this.gameService.getFullGame(this.gameID)
+    //   // TODO Убрать any, разобраться с типами
+    //   .pipe(map((res: any) => {
+    //     return res.data;
+    //   }), map((game) => {
+    //     game.stories = orderBy(game.stories, ['position'], ['asc']);
+    //     return game;
+    //   }))
+    //   .subscribe({
+    //     next: (game: GameFull) => {
+    //       this.players = game.players
+    //       this.gameData = game;
+    //     },
+    //     error: () => {
+    //       // alert('Данные игры не получены');
+    //       this.toastr.error('Данные игры не получены');
+    //     }
+    //   });
 
   }
 
