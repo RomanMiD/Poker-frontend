@@ -1,5 +1,5 @@
-import {AbstractControl, ControlValueAccessor, FormGroup, ValidationErrors, Validator} from "@angular/forms";
-import {Base} from "./base.class";
+import { AbstractControl, ControlValueAccessor, FormGroup, ValidationErrors, Validator } from "@angular/forms";
+import { Base } from "./base.class";
 
 export abstract class SubForm extends Base implements ControlValueAccessor, Validator {
   form: FormGroup;

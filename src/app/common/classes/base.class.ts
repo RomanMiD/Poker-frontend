@@ -6,6 +6,7 @@ import { Directive, OnDestroy } from '@angular/core';
 // tslint:disable-next-line:directive-class-suffix
 export abstract class Base implements OnDestroy {
   protected subs = new SubSink();
+
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }

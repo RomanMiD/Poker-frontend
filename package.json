@@ -33,7 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "ngx-toastr": "^13.2.0",
-    "poker-common": "file:../pokher-common",
+    "poker-common": "file:../poker-common",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "subsink": "^1.0.2",

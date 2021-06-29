@@ -23,6 +23,7 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.getList();
   }
+
 // TODO Доработать сортировку
   onSort(evt) {
 
@@ -32,7 +33,7 @@ export class BoardComponent implements OnInit {
     return gameStatusLabel[status] || status || 'Нет статуса'
   }
 
-  getList(paginationParams: PaginationParams= {skip: 0, limit: this.pageSize}): void {
+  getList(paginationParams: PaginationParams = {skip: 0, limit: this.pageSize}): void {
     this.gameList$ = this.gameService.getGameList(paginationParams).pipe(map((res) => {
       this.totalCount = res.data.count;
       return res.data.items

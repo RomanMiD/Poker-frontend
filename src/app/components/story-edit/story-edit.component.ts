@@ -1,11 +1,11 @@
 import { Component, forwardRef } from '@angular/core';
 import {
   FormBuilder,
-   NG_VALIDATORS,
+  NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   Validators
 } from '@angular/forms';
-import {SubForm} from "../../common/classes/sub-from.class";
+import { SubForm } from "../../common/classes/sub-from.class";
 
 @Component({
   selector: 'app-story-edit',
@@ -26,7 +26,7 @@ import {SubForm} from "../../common/classes/sub-from.class";
 
 
 export class StoryEditComponent extends SubForm {
-  constructor(private fb:FormBuilder) {
+  constructor(private fb: FormBuilder) {
     super();
     this.form = fb.group({
       id: [null],

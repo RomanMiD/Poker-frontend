@@ -5,6 +5,7 @@ header {
   height: 40px;
   background-color: rgba(99, 140, 197, 0.82);
   transition: transform 200ms linear;
+
   &.hidden {
     transform: translateY(-100%);
 

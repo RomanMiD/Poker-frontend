@@ -1,27 +1,31 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+
 .card {
   cursor: pointer;
   display: block;
   margin-right: 10px;
   margin-top: 10px;
   width: 133px;
-  padding:0 5px;
+  padding: 0 5px;
   border-radius: 2%;
   font-size: 20px;
   position: relative;
   transition: all .1s linear;
   user-select: none;
-  &:active{
+
+  &:active {
     box-shadow: 0 10px 50px rgba(156, 173, 195, 0.3);
     outline-offset: 0;
     transform: translateY(-4px);
   }
-  &.selected{
-    background-color: rgba($primary,0.85);
+
+  &.selected {
+    background-color: rgba($primary, 0.85);
 
   }
-  .top-left{
+
+  .top-left {
     padding-bottom: 5px;
     text-align: left;
     margin-bottom: 0;
@@ -46,18 +50,17 @@
     border-radius: 4px;
     margin-left: 16px;
     font-weight: 300;
-    font-family: Lato,sans-serif;
+    font-family: Lato, sans-serif;
     margin-right: 16px;
     max-height: 120px;
   }
 
-  .icon{
+  .icon {
 
     //font-family: 'Font Awesome 5 Free';
     content: '\f0f4';
 
   }
-
 
 
 }

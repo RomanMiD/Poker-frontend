@@ -1,11 +1,12 @@
-.ng-invalid  ng-touched{
-  border-color: red;
-}
-.textarea .ng-invalid{
+.ng-invalid .ng-touched {
   border-color: red;
 }
 
-.cross{
+.textarea .ng-invalid {
+  border-color: red;
+}
+
+.cross {
   position: absolute;
 
 }

@@ -3,8 +3,6 @@ import { Base } from '../../common/classes/base.class';
 import { PaginationParams } from 'poker-common';
 
 
-
-
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
@@ -13,7 +11,7 @@ import { PaginationParams } from 'poker-common';
 export class PaginationComponent extends Base implements OnInit {
   @Input()
   public pageSize: number;
-  public page= 1;
+  public page = 1;
   @Input()
   public totalCount: number;
   @Output()
@@ -29,10 +27,10 @@ export class PaginationComponent extends Base implements OnInit {
   }
 
   onPageChange(pageNumber: number) {
-    const paginationParams: PaginationParams= {
-      skip: (pageNumber*this.pageSize) - this.pageSize,
+    const paginationParams: PaginationParams = {
+      skip: (pageNumber * this.pageSize) - this.pageSize,
       limit: this.pageSize
-      }
+    }
     this.pageChange.emit(paginationParams);
   }
 }

@@ -1,15 +1,18 @@
-.grayed{
+.grayed {
   background-color: #edf2f7;
   padding-bottom: 20px;
 }
-.room-name{
+
+.room-name {
   padding: 25px;
   font-size: 30px;
 }
-.card-table{
+
+.card-table {
   border: black 1px solid;
 
 }
+
 :host {
   display: block;
   height: 30000px;

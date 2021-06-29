@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GameBase, Story } from 'poker-common';
 import { Base } from '../../common/classes/base.class';
-import {cloneDeep} from 'lodash';
+import { cloneDeep } from 'lodash';
+
 @Component({
   selector: 'app-create-game',
   templateUrl: './create-game.component.html',
@@ -26,9 +27,9 @@ export class CreateGameComponent extends Base implements OnInit {
       roomName: [null, [Validators.required,
         Validators.minLength(3),
         Validators.maxLength(40)]],
-      description:[null,
+      description: [null,
         [Validators.minLength(15),
-        Validators.maxLength(150)]],
+          Validators.maxLength(150)]],
       stories: this.fb.array([this.newStoryElement()])
     });
   }
@@ -78,12 +79,12 @@ export class CreateGameComponent extends Base implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.isLoading = true;
-      const formValue= cloneDeep(this.form.value);
-      formValue.stories.forEach((story,index) =>{
+      const formValue = cloneDeep(this.form.value);
+      formValue.stories.forEach((story, index) => {
         delete story.id;
-        story.position= index;
+        story.position = index;
       })
-        this.subs.sink = this.gameService.createGame(formValue)
+      this.subs.sink = this.gameService.createGame(formValue)
         .pipe(finalize(() => this.isLoading = false),
           map((res) => {
             return res.data

@@ -1,8 +1,8 @@
- <div class="right-block">
-    <div class="player-table">
-      <ng-container *ngFor="let player of players">
-        <p [ngClass]="{'alert':isGameMaster(player)}">{{player?.user?.name|| 'no name'}}</p>
-<!--пока что gameMaster обозначается с классом alert-->
-      </ng-container>
-    </div>
+<div class="right-block">
+  <div class="player-table">
+    <ng-container *ngFor="let player of players">
+      <p [ngClass]="{'alert':isGameMaster(player)}">{{player?.user?.name || 'no name'}}</p>
+      <!--пока что gameMaster обозначается с классом alert-->
+    </ng-container>
   </div>
+</div>

@@ -13,9 +13,11 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder) {
   }
-  gotoPage(path: string, id?: number): void{
+
+  gotoPage(path: string, id?: number): void {
     this.router.navigate([path, id]);
   }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       counter: 5
